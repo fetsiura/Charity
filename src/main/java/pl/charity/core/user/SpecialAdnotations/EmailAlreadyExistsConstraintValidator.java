@@ -1,7 +1,7 @@
 package pl.charity.core.user.SpecialAdnotations;
 
 import lombok.RequiredArgsConstructor;
-import pl.jnews.core.user.UserServiceImplement;
+import pl.charity.core.user.UserServiceImplement;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
