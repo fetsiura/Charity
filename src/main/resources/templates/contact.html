@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="wide wow-animation" lang="en">
+<head th:insert="~{fragments/part :: head}"/>
+<body>
+<header th:insert="~{fragments/part :: header}"/>
+
+
+<section id="about-us" class="about-us">
+  <div class="about-us--text">
+    <h2>Cześć, miło Cię witać na mojej stronie, nazywam się Jarosław i jestem początkującym programistą, który oczekuje na nowe wyzwania </h2>
+    <h2><a href="https://www.linkedin.com/in/jaros%C5%82aw-fetsiura-421900184/" class="btn btn--without-border">LinkedIn</a></h2>
+    <h2>Email: fetsiura@gmail.com</h2>
+
+  </div>
+  <div class="about-us--image"><img src="images/jaro.jpg" alt="People in circle" /></div>
+</section>
+
+<footer th:insert="~{fragments/part :: footer}"/>
+
+<script src="js/app.js"></script>
+</body>
+</html>
