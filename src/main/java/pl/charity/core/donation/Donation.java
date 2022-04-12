@@ -41,7 +41,6 @@ public class Donation {
     private Institution institution;
 
     private boolean delivered;
-    private LocalDateTime createTime;
 
 
 }

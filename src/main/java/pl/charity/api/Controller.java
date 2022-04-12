@@ -6,9 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import pl.charity.core.donation.DonationServiceImplement;
 import pl.charity.core.institution.InstitutionServiceImplement;
-import pl.charity.core.user.UserDto;
 
 @org.springframework.stereotype.Controller
 @RequestMapping("/")
@@ -17,9 +16,11 @@ import pl.charity.core.user.UserDto;
 public class Controller {
 
     private final InstitutionServiceImplement institutionService;
+    private final DonationServiceImplement donationService;
     @GetMapping
     public String index(Model model){
-
+        model.addAttribute("donationsQuantity",donationService.countDonation());
+        model.addAttribute("givenDonationsQuantity",donationService.countGivenDonation());
         return "index";
     }
 
@@ -35,13 +36,4 @@ public class Controller {
     }
 
 
-
-
-
-    @GetMapping("/createAllForAdmin")
-    public String createAllForAdmin(){
-
-
-        return "redirect:/";
-    }
 }
