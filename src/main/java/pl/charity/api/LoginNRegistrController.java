@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.charity.core.user.UserDto;
 import pl.charity.core.user.UserServiceImplement;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -45,10 +46,14 @@ public class LoginNRegistrController {
 
     @GetMapping("/login")
     public String login(@CurrentSecurityContext(expression="authentication?.name")
-                                String username){
-
+                                String username,
+                        HttpSession session){
         if(!username.equals("anonymousUser")){
             return "redirect:/dashboard";
+        }
+
+        if(userService.findByEmail(username).getLogin()!=null){
+            session.setAttribute("loginSession",userService.findByEmail(username).getLogin());
         }
         return "login";
     }
