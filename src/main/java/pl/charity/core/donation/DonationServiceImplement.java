@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -31,6 +32,17 @@ public class DonationServiceImplement implements DonationService{
     @Override
     public void changeStatus(Long id) {
 
+    }
+
+    @Override
+    public void delete(Long id) {
+        donationRepository.deleteById(id);
+        log.info("Donation by id {} deleted",id);
+    }
+
+    @Override
+    public Optional<Donation> findById(Long id) {
+        return donationRepository.findById(id);
     }
 
     @Override

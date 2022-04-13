@@ -18,20 +18,20 @@
       </div>
     </section>
 
-    <section class="form-group steps">
-      <div class="steps--container">
-        <div class="steps--item" th:each="donation: ${donations}">
+    <section class="form-group steps" th:each="donation: ${donations}">
+      <div class="steps--container" >
+        <div class="steps--item" >
           <span class="icon icon--hands"></span>
           <h3>Przekazane do fundacji: <p th:text="${donation.institution.name}"/></h3>
-          <p>Ilość worków: <p th:text="${donation.quantity}"/></p>
-          <p>Data odbioru: <p th:text="${donation.pickUpDate}"/></p>
-          <p>Czas odbioru: <p th:text="${donation.pickUpTime}"/></p>
-          <p>Miasto: <p th:text="${donation.city}"/></p>
-          <p>Ulica: <p th:text="${donation.street}"/></p>
-          <p>Kod pocztowy: <p th:text="${donation.zipCode}"/></p>
-          <p>Numer telefonu: <p th:text="${donation.phone}"/></p>
-          <p>Komentarz dla kuriera: <p th:text="${donation.pickUpComment}"/></p>
-
+          <p>Ilość worków: <p th:text="${donation.quantity}"/>
+          <p>Data odbioru: <p th:text="${donation.pickUpDate}"/>
+          <p>Czas odbioru: <p th:text="${donation.pickUpTime}"/>
+          <p>Miasto: <p th:text="${donation.city}"/>
+          <p>Ulica: <p th:text="${donation.street}"/>
+          <p>Kod pocztowy: <p th:text="${donation.zipCode}"/>
+          <p>Numer telefonu: <p th:text="${donation.phone}"/>
+          <p>Komentarz dla kuriera: <p th:text="${donation.pickUpComment}"/>
+          <p>Status dostarczenia: <p th:text="${donation.delivered} ? 'TAK' : 'NIE'"></p></p>
 <!--          <c:if test="${donationStatus == false}">-->
 <!--            <form action="/user/donations/edit" method="post">-->
 <!--              <input type="hidden" name="id" value="${donation.id}">-->

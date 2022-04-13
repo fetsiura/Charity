@@ -51,10 +51,6 @@ public class LoginNRegistrController {
         if(!username.equals("anonymousUser")){
             return "redirect:/dashboard";
         }
-
-        if(userService.findByEmail(username).getLogin()!=null){
-            session.setAttribute("loginSession",userService.findByEmail(username).getLogin());
-        }
         return "login";
     }
 }

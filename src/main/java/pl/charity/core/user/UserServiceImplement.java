@@ -23,6 +23,11 @@ public class UserServiceImplement implements UserService {
         return userRepository.findByEmail(email);
     }
 
+
+    public Optional<User> findForLogin(String email){
+        return Optional.ofNullable(userRepository.findByEmail(email));
+    }
+
     @Override
     public void saveUser(UserDto userDto) {
 

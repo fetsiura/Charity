@@ -1,14 +1,14 @@
-<head xmlns:th="http://www.thymeleaf.org" th:fragment="head">
+<head xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" th:fragment="head">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Charity</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link th:rel="stylesheet" th:href="@{css/style.css}" />
 </head>
 
 
 
-<header th:fragment="header" class="header--main-page">
+<header th:fragment="headerNonLogin" class="header--main-page">
     <nav class="container container--70">
         <ul class="nav--actions">
             <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
@@ -18,7 +18,7 @@
         <ul>
             <li><a href="/" class="btn btn--without-border active">Start</a></li>
             <li><a href="/institution" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="/add-gift" class="btn btn--without-border">Przekaż dary</a></li>
+            <li><a href="/gift/add" class="btn btn--without-border">Przekaż dary</a></li>
             <li><a href="/contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
@@ -37,11 +37,14 @@
 <header th:fragment="headerLogin" class="header--main-page">
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="/logout" class="btn btn--small btn--without-border">Wyloguj</a></li>
+            <li><a>Cześć, </a><a th:text="${session.loginSession}"></a></li>
+            <form th:action="@{/logout}" method="post">
+                <li><button class="btn btn--small btn--without-border" type="submit">Log out</button></li>
+            </form>
         </ul>
 
         <ul>
-            <li><a href="/" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/gift/add" class="btn btn--without-border active">Start</a></li>
             <li><a href="/institution" class="btn btn--without-border">Fundacje i organizacje</a></li>
             <li><a href="/gift" class="btn btn--without-border">Twoje dary</a></li>
             <li><a href="/contact" class="btn btn--without-border">Kontakt</a></li>
@@ -58,13 +61,12 @@
     </div>
 </header>
 
-
 <footer th:fragment="footer">
-
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2022</span>
         <div class="bottom-line--icons">
-            <a href="https://www.facebook.com/profile.php?id=100003035513405" class="btn btn--small"><img src="images/icon-facebook.svg"/></a> <a href="https://www.instagram.com/jaro_fetsiura/" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>
+            <a href="https://www.instagram.com/jaro_fetsiura/" class="btn btn--small"><img th:src="@{images/icon-instagram.svg}"></a>
         </div>
     </div>
 </footer>
+
