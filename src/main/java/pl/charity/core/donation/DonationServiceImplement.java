@@ -26,7 +26,8 @@ public class DonationServiceImplement implements DonationService{
 
     @Override
     public void add(Donation donation) {
-
+        donationRepository.save(donation);
+        log.info("Saved donation {}",donation);
     }
 
     @Override

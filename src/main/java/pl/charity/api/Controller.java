@@ -5,10 +5,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.charity.core.category.CategoryServiceImplement;
+import pl.charity.core.donation.Donation;
 import pl.charity.core.donation.DonationServiceImplement;
 import pl.charity.core.institution.InstitutionServiceImplement;
+import pl.charity.core.user.UserServiceImplement;
+
+import javax.validation.Valid;
 
 @org.springframework.stereotype.Controller
 @RequestMapping("/")
@@ -18,6 +25,8 @@ public class Controller {
 
     private final InstitutionServiceImplement institutionService;
     private final DonationServiceImplement donationService;
+    private final CategoryServiceImplement categoryService;
+    private final UserServiceImplement userService;
     @GetMapping
     public String index(Model model,
                         @CurrentSecurityContext(expression="authentication?.name")
@@ -54,9 +63,26 @@ public class Controller {
 
 
 
-    @GetMapping("/gift-add")
-    public String getGiftAddForm(){
+    @GetMapping("/add-donation")
+    public String getGiftAddForm(Model model,
+                                 @CurrentSecurityContext(expression="authentication?.name")
+                                 String username){
+        model.addAttribute("user",userService.findByEmail(username));
+        model.addAttribute("institutions",institutionService.findAll());
+        model.addAttribute("donation",new Donation());
+        model.addAttribute("categories",categoryService.allCategories());
+        if(!username.equals("anonymousUser")){
+            return "user/addDonation";
+        }
+        return "addDonation";
+    }
 
-        return "addGift";
+    @PostMapping("/add-donation")
+    public String postDonation(Donation donation,
+                               @CurrentSecurityContext(expression="authentication?.name")
+                                   String username){
+
+        donationService.add(donation);
+        return "redirect:";
     }
 }

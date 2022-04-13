@@ -43,7 +43,7 @@ public class ForLoginUser {
         return "user/dashboard";
     }
 
-    @GetMapping("/gift")
+    @GetMapping("/donation")
     public String gift(Model model,
                             @CurrentSecurityContext(expression="authentication?.name")
                             String username){
@@ -51,25 +51,25 @@ public class ForLoginUser {
         model.addAttribute("donations",donationService.findAllByUserId(userService.findByEmail(username).getId()));
         model.addAttribute("donationsQuantity",donationService.countDonation());
         model.addAttribute("givenDonationsQuantity",donationService.countGivenDonation());
-        return "user/gift";
+        return "user/donation";
     }
 
 
 
 
-    @PostMapping("/gift/edit")
+    @PostMapping("/donation/edit")
     public String editGiftForm(@RequestParam Long id,
                                Model model){
         model.addAttribute("donationsQuantity",donationService.countDonation());
         model.addAttribute("givenDonationsQuantity",donationService.countGivenDonation());
         model.addAttribute("donation",donationService.findById(id));
-        return "user/editGift";
+        return "user/editDonation";
     }
-    @PostMapping("/gift/delete")
+    @PostMapping("/donation/delete")
     public String deleteGift(@RequestParam Long id){
 
         donationService.delete(id);
-        return "redirect:/gift";
+        return "redirect:/donation";
     }
 
 
