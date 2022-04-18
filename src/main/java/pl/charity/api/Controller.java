@@ -64,7 +64,9 @@ public class Controller {
         if(!username.equals("anonymousUser")){
             setSessionUserName(session,username);
             return "user/contact";
-        }return "contact";
+        }
+
+        return "contact";
     }
 
 

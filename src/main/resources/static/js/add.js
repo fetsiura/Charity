@@ -81,19 +81,22 @@ document.addEventListener("DOMContentLoaded", function() {
         categoryInputValue.forEach(el => {
                 el.addEventListener('input', function (){
                     if(el.value<2){
-                        categorySummary.innerText='ubrań, które nadają się do ponownego użycia'
+                        categorySummary.innerText='AGD'
                     }
                     if(el.value>1 && el.value<3){
-                        categorySummary.innerText='ubrania, do wyrzucenia'
-                    }
-                    if(el.value>2 && el.value<4){
-                        categorySummary.innerText='zabawek'
-                    }
-                    if(el.value>3 && el.value<5){
                         categorySummary.innerText='książek'
                     }
+                    if(el.value>2 && el.value<4){
+                        categorySummary.innerText='odzieży'
+                    }
+                    if(el.value>3 && el.value<5){
+                        categorySummary.innerText='mebli'
+                    }
                     if(el.value>4 && el.value<6){
-                        categorySummary.innerText='innego'
+                        categorySummary.innerText='akcesoria'
+                    }
+                    if(el.value>5 && el.value<7){
+                        categorySummary.innerText='zabawek'
                     }
                 })
             }

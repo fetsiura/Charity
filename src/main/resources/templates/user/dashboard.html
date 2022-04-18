@@ -24,7 +24,8 @@
         <div class="steps--item" >
           <span class="icon icon--hands"></span>
           <h3>Przekazane do fundacji: <p th:text="${donation.institution.name}"/></h3>
-          <p>Użytkownik: <p th:text="${donation.user.login}"/>
+          <p>Użytkownik: <p th:text="${donation.user ==null}  ?  'Nie zarejestrowany' : ${donation.user.login}"/>
+
           <p>Ilość worków: <p th:text="${donation.quantity}"/>
           <p>Data odbioru: <p th:text="${donation.pickUpDate}"/>
           <p>Czas odbioru: <p th:text="${donation.pickUpTime}"/>
