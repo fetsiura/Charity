@@ -24,6 +24,7 @@
         <div class="steps--item" >
           <span class="icon icon--hands"></span>
           <h3>Przekazane do fundacji: <p th:text="${donation.institution.name}"/></h3>
+          <p>Użytkownik: <p th:text="${donation.user.login}"/>
           <p>Ilość worków: <p th:text="${donation.quantity}"/>
           <p>Data odbioru: <p th:text="${donation.pickUpDate}"/>
           <p>Czas odbioru: <p th:text="${donation.pickUpTime}"/>
@@ -33,16 +34,6 @@
           <p>Numer telefonu: <p th:text="${donation.phone}"/>
           <p>Komentarz dla kuriera: <p th:text="${donation.pickUpComment}"/>
           <p>Status dostarczenia: <p th:text="${donation.delivered} ? 'TAK' : 'NIE'"></p></p>
-<!--          <c:if test="${donationStatus == false}">-->
-<!--            <form action="/user/donations/edit" method="post">-->
-<!--              <input type="hidden" name="id" value="${donation.id}">-->
-<!--              <button class="btn" type="submit">EDYTUJ</button>-->
-<!--            </form>-->
-<!--            <%&#45;&#45;                <form action="/user/donations/delete" method="post">&#45;&#45;%>-->
-<!--            <%&#45;&#45;                    <input type="hidden" name="id" value="${donation.id}">&#45;&#45;%>-->
-<!--            <%&#45;&#45;                    <button class="btn" type="submit">USUŃ</button>&#45;&#45;%>-->
-<!--            <%&#45;&#45;                </form>&#45;&#45;%>-->
-<!--          </c:if>-->
         </div>
       </div>
 

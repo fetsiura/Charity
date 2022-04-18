@@ -1,51 +1,64 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org" class="wide wow-animation" lang="pl">-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="wide wow-animation" lang="pl">
 
-<!--  <head th:insert="~{fragments/part :: head}"/>-->
-<!--  <body>-->
-<!--    <header th:insert="~{fragments/part :: headerLogin}"/>-->
+  <head th:insert="~{fragments/part :: headForEdit}"/>
+  <body>
+    <header th:insert="~{fragments/part :: headerLogin}"/>
 
-<!--    <section id="stats" class="stats">-->
-<!--      <div class="container container&#45;&#45;85">-->
-<!--        <div class="stats&#45;&#45;item">-->
-<!--          <em th:text="${donationsQuantity}"></em>-->
-<!--          <h3>Oddanych worków</h3>-->
-<!--        </div>-->
+    <section id="stats" class="stats">
+      <div class="container container--85">
+        <div class="stats--item">
+          <em th:text="${donationsQuantity}"></em>
+          <h3>Oddanych worków</h3>
+        </div>
 
-<!--        <div class="stats&#45;&#45;item">-->
-<!--          <em th:text="${givenDonationsQuantity}"></em>-->
-<!--          <h3>Przekazanych darów</h3>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </section>-->
+        <div class="stats--item">
+          <em th:text="${givenDonationsQuantity}"></em>
+          <h3>Przekazanych darów</h3>
+        </div>
+      </div>
+    </section>
 
-<!--    <section class="form-group steps" th:each="donation: ${donations}">-->
-<!--      <div class="steps&#45;&#45;container" >-->
-<!--        <div class="steps&#45;&#45;item" >-->
-<!--          <form th:object="${donation}" th:method="post" th:action="@{/gift/update}">-->
-<!--            <span class="icon icon&#45;&#45;hands"></span>-->
-<!--            <input type="hidden" name="user">-->
-<!--            -->
-<!--            <h3>Przekazane do fundacji: <input name="" th:text="${donation.institution.name}"/></h3>-->
-<!--            <p>Ilość worków: <p th:text="${donation.quantity}"/>-->
-<!--            <p>Data odbioru: <p th:text="${donation.pickUpDate}"/>-->
-<!--            <p>Czas odbioru: <p th:text="${donation.pickUpTime}"/>-->
-<!--            <p>Miasto: <p th:text="${donation.city}"/>-->
-<!--            <p>Ulica: <p th:text="${donation.street}"/>-->
-<!--            <p>Kod pocztowy: <p th:text="${donation.zipCode}"/>-->
-<!--            <p>Numer telefonu: <p th:text="${donation.phone}"/>-->
-<!--            <p>Komentarz dla kuriera: <p th:text="${donation.pickUpComment}"/>-->
-<!--            <p>Status dostarczenia: <p th:text="${donation.delivered} ? 'TAK' : 'NIE'"></p>-->
+    <section>
+      <div class="slogan container container--90" style="text-align: center">
+        <div class="slogan--item">
+          <h1>
+            <button><a href="/gift/add">Przekaż dar</a></button>
+          </h1>
+        </div>
+      </div>
+    </section>
 
-<!--          </form>-->
-<!--        </div>-->
-<!--      </div>-->
+    <section class="form-group steps" >
+      <div class="steps--container" >
+        <div class="steps--item" >
+          <form th:method="post" th:action="@{/donation/update}" th:object="${donation}" >
+            <input type="hidden" name="id" th:field="*{id}">
+            <input type="hidden" name="delivered" th:field="*{delivered}">
+            <input type="hidden" name="categories" th:field="*{categories}">
+            <input type="hidden" name="user_id" th:field="*{user}">
+            <input type="hidden" name="institution_id" th:field="*{institution}">
+            <span class="icon icon--hands"></span>
+            <p>Ilość worków: <input type="number" step="1" min="1" name="quantity" th:field="*{quantity}"/>
+            <p>Data odbioru: <input type="date" name="pickUpDate" th:field="*{pickUpDate}"/>
+            <p>Czas odbioru: <input type="time" name="pickUpTime" th:field="*{pickUpTime}"/>
+            <p>Miasto: <input name="city" th:field="*{city}"/>
+            <p>Ulica: <input name="street" th:field="*{street}"/>
+            <p>Kod pocztowy: <input name="zipCode" th:field="*{zipCode}"/>
+            <p>Numer telefonu: <input name="phone" th:field="*{phone}"/>
+            <p>Komentarz dla kuriera: <input name="pickUpComment" th:field="*{pickUpComment}"/>
+          <button type="submit" >Edit</button>
+          </form>
 
-<!--    </section>-->
+
+        </div>
+      </div>
+
+    </section>
 
 
-<!--    <footer th:insert="~{fragments/part :: footer}"/>-->
+    <footer th:insert="~{fragments/part :: footerForEdit}"/>
 
-<!--    <script src="js/app.js"></script>-->
-<!--  </body>-->
-<!--</html>-->
+    <script src="js/app.js"></script>
+  </body>
+</html>

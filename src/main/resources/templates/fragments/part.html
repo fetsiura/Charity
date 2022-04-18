@@ -6,6 +6,14 @@
     <link th:rel="stylesheet" th:href="@{css/style.css}" />
 </head>
 
+<head xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" th:fragment="headForEdit">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Charity</title>
+    <link th:rel="stylesheet" th:href="@{../css/style.css}" />
+</head>
+
 
 
 <header th:fragment="headerNonLogin" class="header--main-page">
@@ -45,6 +53,7 @@
 
         <ul>
             <li><a href="/add-donation" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/dashboard" class="btn btn--without-border">Dashboard</a></li>
             <li><a href="/institution" class="btn btn--without-border">Fundacje i organizacje</a></li>
             <li><a href="/donation" class="btn btn--without-border">Twoje dary</a></li>
             <li><a href="/contact" class="btn btn--without-border">Kontakt</a></li>
@@ -62,6 +71,16 @@
 </header>
 
 <footer th:fragment="footer">
+    <div class="bottom-line">
+        <span class="bottom-line--copy">Copyright &copy; 2022</span>
+        <div class="bottom-line--icons">
+            <a href="https://www.instagram.com/jaro_fetsiura/" class="btn btn--small"><img th:src="@{images/icon-instagram.svg}"></a>
+        </div>
+    </div>
+</footer>
+
+
+<footer th:fragment="footerForEdit">
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2022</span>
         <div class="bottom-line--icons">

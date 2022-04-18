@@ -24,4 +24,4 @@ INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
 
 INSERT INTO DONATION (id, quantity,street,city,zip_code,phone,pick_up_date,pick_up_time,pick_up_comment,institution_id,user_id,delivered) VALUES (1, 1,'Motycka 23/2','Warszawa','03-566','743444222','2022-01-01','11:11','po prawej stronie od budynku',1,1,false);
 INSERT INTO DONATION (id, quantity,street,city,zip_code,phone,pick_up_date,pick_up_time,pick_up_comment,institution_id,user_id,delivered) VALUES (2, 2,'Powstańców','Ząbki','05-764','6566677676','2022-03-04','10:01','zadzwonić w domofon',2,1,false);
-INSERT INTO DONATION (id, quantity,street,city,zip_code,phone,pick_up_date,pick_up_time,pick_up_comment,institution_id,user_id,delivered) VALUES (3, 4,'Jana Pawła II','Catowice','00-141','65376756765','2022-03-02','19:00','brak',3,1,true);
+INSERT INTO DONATION (id, quantity,street,city,zip_code,phone,pick_up_date,pick_up_time,pick_up_comment,institution_id,user_id,delivered) VALUES (3, 4,'Jana Pawła II','Katowice','00-141','65376756765','2022-03-02','19:00','brak',3,1,true);

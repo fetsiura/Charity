@@ -44,23 +44,33 @@
           <p>Komentarz dla kuriera: <p th:text="${donation.pickUpComment}"/>
           <p>Status dostarczenia: <p th:text="${donation.delivered} ? 'TAK' : 'NIE'"></p>
 
+
+          <form th:method="post" th:action="@{/donation/edit}" >
           <div th:switch="${donation.delivered}">
             <p th:case="${false}">
-              <form th:method="post" th:action="@{/gift/edit}" >
                 <input type="hidden" name="id" th:value="${donation.id}">
                 <button type="submit" class="btn--highlighted" >EDIT</button>
-               </form>
             </p>
           </div>
+          </form>
 
+          <form th:method="post" th:action="@{/donation/delete}" >
           <div th:switch="${donation.delivered}">
             <p th:case="${false}">
-              <form th:method="post" th:action="@{/gift/delete}" >
                 <input type="hidden" name="id" th:value="${donation.id}">
                 <button type="submit" class="btn--highlighted" >DELETE</button>
-               </form>
             </p>
           </div>
+          </form>
+
+          <form th:method="post" th:action="@{/donation/changeStatus}" >
+          <div th:switch="${donation.delivered}">
+            <p th:case="${false}">
+                <input type="hidden" name="id" th:value="${donation.id}">
+                <button type="submit" class="btn--highlighted" style="background: green" >ZMIEŃ STATUS DOSTARCZENIA</button>
+            </p>
+          </div>
+          </form>
 
 
         </div>

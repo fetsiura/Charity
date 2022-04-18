@@ -15,7 +15,9 @@ import pl.charity.core.donation.DonationServiceImplement;
 import pl.charity.core.institution.InstitutionServiceImplement;
 import pl.charity.core.user.UserServiceImplement;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Locale;
 
 @org.springframework.stereotype.Controller
 @RequestMapping("/")
@@ -44,9 +46,11 @@ public class Controller {
     @GetMapping("/institution")
     public String getInstitution(Model model,
                                  @CurrentSecurityContext(expression="authentication?.name")
-                                 String username){
+                                 String username,
+                                 HttpSession session){
         model.addAttribute("institutions", institutionService.findAll());
         if(!username.equals("anonymousUser")){
+            setSessionUserName(session,username);
             return "user/institution";
         }
         return "institution";
@@ -54,9 +58,11 @@ public class Controller {
 
     @GetMapping("/contact")
     public String contact(@CurrentSecurityContext(expression="authentication?.name")
-                              String username){
+                              String username,
+                          HttpSession session){
 
         if(!username.equals("anonymousUser")){
+            setSessionUserName(session,username);
             return "user/contact";
         }return "contact";
     }
@@ -66,12 +72,14 @@ public class Controller {
     @GetMapping("/add-donation")
     public String getGiftAddForm(Model model,
                                  @CurrentSecurityContext(expression="authentication?.name")
-                                 String username){
+                                 String username,
+                                 HttpSession session){
         model.addAttribute("user",userService.findByEmail(username));
         model.addAttribute("institutions",institutionService.findAll());
         model.addAttribute("donation",new Donation());
         model.addAttribute("categories",categoryService.allCategories());
         if(!username.equals("anonymousUser")){
+            setSessionUserName(session,username);
             return "user/addDonation";
         }
         return "addDonation";
@@ -83,6 +91,17 @@ public class Controller {
                                    String username){
 
         donationService.add(donation);
-        return "redirect:";
+        if(!username.equals("anonymousUser")){
+            return "redirect:/donation";
+        }
+        return "redirect:/";
+    }
+
+
+    public void setSessionUserName(HttpSession session,
+                                   String username){
+        if(session.getAttribute("loginSession")==null){
+            session.setAttribute("loginSession",userService.findForLogin(username).get().getLogin().toUpperCase(Locale.ROOT));
+        }
     }
 }

@@ -39,7 +39,6 @@ public class Donation {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "institution_id")
     private Institution institution;
-
     private boolean delivered;
 
 

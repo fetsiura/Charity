@@ -19,4 +19,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     Integer countGivenDonations();
 
     List<Donation> findAllByUserId(Long id);
+
+    List<Donation> findAll();
 }

@@ -15,6 +15,11 @@ public class DonationServiceImplement implements DonationService{
     private final DonationRepository donationRepository;
 
     @Override
+    public List<Donation> findAll() {
+        return donationRepository.findAll();
+    }
+
+    @Override
     public Integer countDonation() {
         return donationRepository.countAllDonations();
     }
@@ -33,6 +38,12 @@ public class DonationServiceImplement implements DonationService{
     @Override
     public void changeStatus(Long id) {
 
+    }
+
+    @Override
+    public void update(Donation donation) {
+        donationRepository.save(donation);
+        log.info("Updated donation {}",donation);
     }
 
     @Override
