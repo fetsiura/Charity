@@ -75,9 +75,6 @@ public class ForLoginUser {
 
     @PostMapping("/donation/update")
     public String donationUpdate(@ModelAttribute Donation donation){
-
-        log.error(donation.toString());
-
         donationService.update(donation);
         return "redirect:/donation";
     }
